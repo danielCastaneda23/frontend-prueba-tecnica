@@ -68,4 +68,29 @@ export class ProjectService {
       throw new Error(`error ${error}`);
     }
   }
+
+  public async createUser (payload: any, token: string){
+    const backendUrl = environment.backendUrl;
+    try {
+      const response: any = await lastValueFrom(
+        this.httpRequest.post(
+          `${backendUrl}/user/create`,
+          {
+            email: payload['email'],
+            password: payload['password'],
+            role: payload['user']
+          },
+          {
+            headers: {
+              'Access-Control-Allow-Origin': '*',
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
+      );
+      return response;
+    } catch (error) {
+      throw new Error(`error ${error}`);
+    }
+  }
 }
