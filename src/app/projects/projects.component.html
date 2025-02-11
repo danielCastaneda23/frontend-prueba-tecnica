@@ -1,21 +1,22 @@
 <article class="container-projects">
     <aside class="container-projects__aside">
-        <ul>
-            <li class="container-projects__section">
-                Proyectos en proceso
-            </li>
+        <ul class="container-projects__aside__element">
             <li>
-                Proyectos cerrados
-            </li>
-            <li>
-                Proyectos no Iniciados
+                <a routerLink="/dashboard/projects/create" routerLinkActive="active">
+                    Crear
+                </a>
             </li>
         </ul>
     </aside>
     <section class="container-projects__list">
-            <ul class="container-projects__element">
-                <li> Listar Proyectos</li>
-            </ul>
+        <ul class="container-projects__list__element">
+            <li class="container-projects__list__card" *ngFor="let project of  this.projects">
+                <h1>{{project['name']}}</h1>
+                <p>{{project['description']}}</p>
+                <p>{{!!project['state'] ? 'Active' : 'Closed'}}</p>
+                <button (click)="deleteProject(project['id'])">Delete</button>
+            </li>
+        </ul>
     </section>
 
 </article>

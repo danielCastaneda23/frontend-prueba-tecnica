@@ -1,0 +1,14 @@
+<form class="container-form" (submit)="onSubmit()" [formGroup]="formGroup">
+    <label class="container-form__label" for="name">Nombre del proyecto: </label>
+    <input class="container-form__input" id="name" placeholder="Nombre" type="name" formControlName="name" />
+
+    <label class="container-form__label" for="description">Descripcion del proyecto: </label>
+    <input class="container-form__input" id="description" placeholder="Descripcion" type="text"
+        formControlName="description" />
+
+    <label class="container-form__label" for="state">Estado del proyecto: </label>
+    <input class="container-form__input" id="state" type="checkbox" formControlName="state" />
+    
+
+    <button class="container-form__submit" type="submit" [disabled]="!formGroup.valid">Crear</button>
+</form>
